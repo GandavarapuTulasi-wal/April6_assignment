@@ -79,6 +79,7 @@ router.post('/transfer', async (req, res) => {
     transactionModel.create({
       transaction_date: new Date(),
       transaction_amount,
+      userid: sender,
     });
     const debitMoney = await balanceModel.update(
       { balance: senderId.balance - parseInt(transaction_amount) },
